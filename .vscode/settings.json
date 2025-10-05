@@ -1,0 +1,14 @@
+{
+    "cSpell.words": [
+        "aiosqlite",
+        "automod",
+        "cooldown",
+        "dotenv",
+        "pydantic",
+        "sessionmaker",
+        "sqlmodel",
+        "untimeout",
+        "vcmod",
+        "voicemod"
+    ]
+}
