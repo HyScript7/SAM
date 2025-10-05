@@ -94,7 +94,7 @@ def connect(callback: _Callable[[LogAction], _Coroutine[_Any, _Any, None]]) -> N
     Args:
         callback (_Callable[[LogAction], _Coroutine[_Any, _Any, None]]): The callback to connect.
     """
-    if callable not in _callbacks:
+    if callback not in _callbacks:
         _callbacks.append(callback)
 
 
@@ -105,5 +105,5 @@ def disconnect(callback: _Callable[[LogAction], _Coroutine[_Any, _Any, None]]) -
     Args:
         callback (_Callable[[LogAction], _Coroutine[_Any, _Any, None]]): The callback to disconnect.
     """
-    if callable in _callbacks:
+    if callback in _callbacks:
         _callbacks.remove(callback)
