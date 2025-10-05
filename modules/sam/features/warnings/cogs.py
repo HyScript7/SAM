@@ -50,6 +50,7 @@ class Warnings(commands.Cog):
             await svc.issue_warning(user.id, ctx.guild.id, ctx.author.id, reason)
         # TODO: Embed
         await ctx.send(f"Warned {user.mention} for `{reason}`")
+        # TODO: Message moderated user
 
     @root.command("remove")
     @commands.guild_only()
@@ -75,6 +76,7 @@ class Warnings(commands.Cog):
             await ctx.send(
                 f"Removed warning from {user.mention} with reason `{reason}`"
             )
+            # TODO: Message moderated user
 
     @root.command("list")
     @commands.guild_only()
@@ -100,6 +102,7 @@ class Warnings(commands.Cog):
             )
         # TODO: Embed
         await ctx.send(f"Cleared warnings for {user.mention} with note `{reason}`")
+        # TODO: Message moderated user
 
     @root.command("view")
     @commands.guild_only()
