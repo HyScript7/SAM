@@ -2,6 +2,15 @@
 Exposes hooks for the Logging feature.
 Allows other features to talk to it.
 
+All logs that you might want to send to a log channel on discord are handled through this API.
+If, for example, sam.features.warnings wants to send a log that a member has been warned, it will
+call `logging_api.log(logging_api.LogAction("Member Warned", "A member has been warned."))`, which
+will in turn pass that action to every single consumer registered with the logging API.
+
+By default, unless you set builtin_logger_enabled to false in the config, one of these consumers
+will be the sam.features.logging.cogs.Logging cog, which saves a copy in the SAM database and posts
+messages into whichever channels are specified in the relevant guild's config.
+
 To get access from other extensions and cogs:
 
 ```py
@@ -48,6 +57,7 @@ class LogField:
 
 
 class LogAction:
+    guild_id: int
     title: str
     description: str
     fields: list[LogField]
@@ -55,11 +65,13 @@ class LogAction:
 
     def __init__(
         self,
+        guild_id: int,
         title: str,
         description: str,
         fields: list[LogField] | None = None,
         timestamp: datetime | None = None,
     ) -> None:
+        self.guild_id = guild_id
         self.title = title
         self.description = description
         self.fields = fields or []

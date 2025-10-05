@@ -15,9 +15,10 @@ LOG_FIELD_REASON_NAME = "Reason"
 
 
 def get_log_action(
-    title: str, description: str, user_id: int, moderator_id: int, reason: str
+    guild_id: int, title: str, description: str, user_id: int, moderator_id: int, reason: str
 ) -> logging_api.LogAction:
     return logging_api.LogAction(
+        guild_id,
         title,
         description,
         fields=[
@@ -50,6 +51,7 @@ class WarnService:
         )
         await logging_api.log(
             get_log_action(
+                guild_id,
                 "Member Warning Issued",
                 "A member has been warned.",
                 user_id,
@@ -69,6 +71,7 @@ class WarnService:
         warn.revoked_at = datetime.now(tz=timezone.utc)
         await logging_api.log(
             get_log_action(
+                guild_id,
                 "Member Warning Revoked",
                 "A member's warning has been revoked.",
                 warn.user_id,
@@ -91,6 +94,7 @@ class WarnService:
             )
         await logging_api.log(
             get_log_action(
+                guild_id,
                 "Member Warnings Cleared",
                 "A member's warnings have been cleared.",
                 user_id,
