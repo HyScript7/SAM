@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlmodel import select
 
 from ...internal.abstract.abstract_repository import AbstractRepository
 from .models import Warn
@@ -14,7 +15,7 @@ class WarnRepository(AbstractRepository[Warn]):
         return (
             (
                 await self.session.execute(
-                    self.model.select().where(self.model.guild_id == guild_id)
+                    select(self.model).where(self.model.guild_id == guild_id)
                 )
             )
             .scalars()
@@ -36,7 +37,7 @@ class WarnRepository(AbstractRepository[Warn]):
         return (
             (
                 await self.session.execute(
-                    self.model.select()
+                    select(self.model)
                     .where(self.model.guild_id == guild_id)
                     .where(self.model.user_id == user_id)
                 )
@@ -60,7 +61,7 @@ class WarnRepository(AbstractRepository[Warn]):
         return (
             (
                 await self.session.execute(
-                    self.model.select()
+                    select(self.model)
                     .where(self.model.guild_id == guild_id)
                     .where(self.model.moderator_id == staff_id)
                 )
@@ -84,7 +85,7 @@ class WarnRepository(AbstractRepository[Warn]):
         return (
             (
                 await self.session.execute(
-                    self.model.select()
+                    select(self.model)
                     .where(self.model.guild_id == guild_id)
                     .where(self.model.created_at > date)
                 )
@@ -108,7 +109,7 @@ class WarnRepository(AbstractRepository[Warn]):
         return (
             (
                 await self.session.execute(
-                    self.model.select()
+                    select(self.model)
                     .where(self.model.guild_id == guild_id)
                     .where(self.model.created_at < date)
                 )
@@ -133,7 +134,7 @@ class WarnRepository(AbstractRepository[Warn]):
         return (
             (
                 await self.session.execute(
-                    self.model.select()
+                    select(self.model)
                     .where(self.model.guild_id == guild_id)
                     .where(self.model.created_at >= start)
                     .where(self.model.created_at <= end)
