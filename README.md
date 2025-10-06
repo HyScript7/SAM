@@ -2,7 +2,7 @@
 
 A drag & drop solution for moderation in your custom bots.
 
-Developed for The CodeVerse Hub by Aditya.
+Originally developed by [@HyScript7](https://github.com/HyScript7) for The CodeVerse Hub discord server owned by [Aditya](https://github.com/youngcoder45/).
 
 ## Features
 
@@ -16,9 +16,9 @@ Developed for The CodeVerse Hub by Aditya.
 
 ## Installation
 
-Move the `sam` module from `modules` into your cogs, extensions or modules directory (wherever you keep discord.py extensions).
+Build & install the package using uv, or download it from pip.
 
-Load the module using discord.py's `discord.ext.commands.Bot.load_extension`.
+Load the module using discord.py's `discord.ext.commands.Bot.load_extension` with the package name as the only parameter.
 
 ## License
 

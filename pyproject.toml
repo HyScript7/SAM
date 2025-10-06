@@ -1,7 +1,7 @@
 [project]
-name = "sam"
+name = "sam_dpy_hyscript7"
 version = "0.1.0"
-description = "SAM: Script's Advanced Moderation (features)"
+description = "SAM: Script's Advanced Moderation (features) for discord.py"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -11,3 +11,9 @@ dependencies = [
     "python-dotenv>=1.1.1",
     "sqlmodel>=0.0.25",
 ]
+[project.urls]
+Homepage = "https://github.com/HyScript7/SAM"
+Issues = "https://github.com/HyScript7/SAM/issues"
+[build-system]
+requires = ["uv_build >= 0.8.17, <0.9.0"]
+build-backend = "uv_build"
