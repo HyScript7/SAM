@@ -41,10 +41,12 @@ class DemoBot(commands.Bot):
                 await bot.load_extension(extension)
             except Exception as e:
                 print(f"Failed to load extension {extension}: {e}")
+                print("Are you sure SAM is installed? Try running the script using `uv run --with dist/sam-x.x.x.tar.gz main.py` where x.x.x is the version.")
 
 
+# ! Requires us to build and pip install sam or run using `uv run --with dist/sam-0.1.0.tar.gz main.py`
 initial_extensions = [
-    "modules.sam",
+    "sam",
 ]
 
 bot = DemoBot(
